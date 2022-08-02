@@ -11,8 +11,6 @@ def index(request):
 
 def room(request, roomId):
     result = Room.objects.filter(id=roomId).first()
-    print(result)
-    
     if not result:
         return HttpResponseNotFound
     return render(request, 'base/room.html', {'room': result})
@@ -20,5 +18,4 @@ def room(request, roomId):
 
 def rooms(request):
     result = Room.objects.all().order_by('id')
-    print(result)
     return render(request, 'base/rooms.html', {'rooms': result})
